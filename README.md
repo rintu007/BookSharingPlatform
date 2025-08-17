@@ -68,7 +68,7 @@ The **Book Sharing Platform** is a web-based application that allows users to sh
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/book-sharing-platform.git
-````
+   ```
 
 2. Install dependencies:
 
