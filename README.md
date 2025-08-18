@@ -71,7 +71,7 @@ The **Book Sharing Platform** is a web-based application that allows users to sh
 2. Install dependencies:
 
    ```bash
-   cd book-sharing-platform
+   cd BookSharingPlatform
    composer install
    ```
 
