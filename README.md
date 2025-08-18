@@ -111,7 +111,7 @@ The **Book Sharing Platform** is a web-based application that allows users to sh
    php artisan db:seed
    ```
 
-    ##### It will create 1 admin user, 10 users and 50 books. default password for all user is 'password'. so you can get user email adress from users list. if you don't want to create demo users and books just run 
+    ##### It will create 1 admin user, 10 users and 50 books. default password for all user is 'password'. so you can get user email adress from users list. if you don't want to create demo users and books just run following command to create system generated admin user.
     ```bash
     php artisan db:seed --class=AdminSeeder
    ```
