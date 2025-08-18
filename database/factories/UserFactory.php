@@ -23,7 +23,6 @@ class UserFactory extends Factory
             'password' => Hash::make('password'),
             'latitude' => $coords['latitude'],
             'longitude' => $coords['longitude'],
-            'remember_token' => Str::random(10),
         ];
     }
 }
