@@ -105,7 +105,7 @@ The **Book Sharing Platform** is a web-based application that allows users to sh
    php artisan passport:install
    ```
 
-7. Seed the database (optional):
+7. Seed the database:
 
    ```bash
    php artisan db:seed
