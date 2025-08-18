@@ -37,20 +37,6 @@ class AdminController extends Controller
         return response()->json(['message' => 'Book deleted successfully']);
     }
 
-    public function login(Request $request)
-    {
-        $credentials = $request->only('email', 'password');
 
-        if (Auth::guard('admin')->attempt($credentials)) {
-            // For token-based auth:
-            $token = Auth::guard('admin')->user()->createToken('admin-token')->plainTextToken;
-            return response()->json(['token' => $token]);
-
-            // For session-based auth:
-            // return redirect('/admin/dashboard');
-        }
-
-        return response()->json(['error' => 'Unauthorized'], 401);
-    }
 }
 

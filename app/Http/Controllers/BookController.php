@@ -49,24 +49,9 @@ class BookController extends Controller
         }
 
 
-        // Build the query to find books within 10 km of the logged-in user
-        $query = DB::table('books')
-            ->join('users', 'books.user_id', '=', 'users.id')
-            ->selectRaw('books.*, ST_Distance_Sphere(point(users.longitude, users.latitude), point(?, ?)) / 1000 AS distance_km', [$user->longitude, $user->latitude])
-            ->where('books.user_id', '!=', $user->id)  // Exclude the logged-in user's books
-            ->havingRaw('distance_km < ?', [10]);
-
-
-
-        // Output the raw SQL query
-        $sql = $query->toSql();
-        \Log::info('Executed SQL Query: ' . $sql);  // Log the query to the Laravel log file
-        // Or simply echo the query for debugging
-        // dd($sql);
-
-        // Execute the query and get the result
-        $books = $query->get();
-
+        $books = Book::nearby($user->latitude, $user->longitude, 10)
+            ->with('user')  // eager load the user
+            ->get();
 
 
         return response()->json($books);
