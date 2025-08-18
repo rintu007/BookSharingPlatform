@@ -35,7 +35,6 @@ The **Book Sharing Platform** is a web-based application that allows users to sh
 
 ## Technical Stack
 
-- **Frontend**: (Optional) Vue.js/React for frontend development.
 - **Backend**: Laravel framework for API development and user management.
   - **Laravel Passport**: For **API authentication** using **JWT tokens**.
   - **MySQL Database**: For storing user information and book details, supporting **geospatial queries**.
@@ -49,7 +48,6 @@ The **Book Sharing Platform** is a web-based application that allows users to sh
 ## Deployment
 
 - The application can be deployed on a web server with **PHP** and **MySQL** environments.
-- Optionally, **Docker** can be used for containerization.
 
 ## API Authentication
 
@@ -113,13 +111,33 @@ The **Book Sharing Platform** is a web-based application that allows users to sh
    php artisan db:seed
    ```
 
+    ##### It will create 1 admin user, 10 users and 50 books. default password for all user is 'password'. so you can get user email adress from users list. if you don't want to create demo users and books just run 
+    ```bash
+    php artisan db:seed --class=AdminSeeder
+   ```
 8. Serve the application:
 
    ```bash
    php artisan serve
    ```
+8. For Getting Admin Token 
+   #### Retrieve Admin Token Using a Tinker 
+   ###Command:
+	   ```bash
+	   php artisan tinker
+	   $admin = \App\Models\Admin::first();  
+	   echo $admin->api_token; 
+	   ```
+	   ### Retrieve the admin from DB:
+	   
+       You can retrieve from db directly (admin table)
+	   
+
 
 ### Endpoints
+
+#### Postman Collection
+https://documenter.getpostman.com/view/4796649/2sB3BHmpJX#48504b09-82c4-425e-b03a-7abf3bf35a6c
 
 #### User Registration:
 
@@ -169,6 +187,27 @@ The **Book Sharing Platform** is a web-based application that allows users to sh
 
 * **GET** `/api/books/nearby`
 * Authorization: Bearer token
+* Response: List of books shared within 10 km of the authenticated user.
+
+#### Admin - View All Users:
+
+* **GET** `/api/admin/users`
+* Authorization: Bearer token
+* admin_token - different from user token
+* Response: List of books shared within 10 km of the authenticated user.
+
+#### Admin - View All Books:
+
+* **GET** `/api/books/books`
+* Authorization: Bearer token
+* admin_token - different from user token
+* Response: List of books shared within 10 km of the authenticated user.
+
+#### Admin - Delete a Book:
+
+* **DELETE** `/api/admin/books/$ID`
+* Authorization: Bearer token
+* admin_token - different from user token
 * Response: List of books shared within 10 km of the authenticated user.
 
 ---
