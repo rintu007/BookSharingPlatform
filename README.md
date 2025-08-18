@@ -122,7 +122,7 @@ The **Book Sharing Platform** is a web-based application that allows users to sh
    ```
 8. For Getting Admin Token 
    #### Retrieve Admin Token Using a Tinker 
-   ## Command:
+   ### Command
 	   ```bash
 	   php artisan tinker
 	   $admin = \App\Models\Admin::first();  
